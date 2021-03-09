@@ -1,5 +1,7 @@
 <?php session_start(); 
       include_once 'Connection.php';
+      include_once 'other/Header.php';
+      include_once 'other/Footer.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -9,11 +11,7 @@
   <link href="css/logincss.css" rel="stylesheet">
 </head>
 <body>
- 
-
-
-  <?php 
-     
+   <?php 
       if(isset($_REQUEST['btnLogin']))
       {
 
@@ -33,6 +31,9 @@
             $_SESSION["mbType"]=$rows["member_type"];
             $_SESSION["mpass"] = $rows['password'];
             $_SESSION['mname'] = $rows['mname'];
+            $_SESSION['uimg'] = $rows['image'];
+            $_SESSION['wing'] = $rows['wing'];
+
             $mt = $rows["member_type"];
             // echo $mt;
             // header("location:Member_Dashboard.php");
@@ -48,7 +49,7 @@
             }
             elseif($mt == "President")
             {
-              header("location:../Project/President/President_Dashboard.php");
+              header("location:President/President_Dashboard.php");
             }
             else
             {
@@ -56,12 +57,7 @@
             }
           }
           }
-        
-        
   ?>
-
-      
-
   <form id="regForm" action="" method="POST">
     <h1><b style="color:#35cebe;">LOGIN</b></h1>
     <div class="tab">USER ID:

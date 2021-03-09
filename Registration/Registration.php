@@ -2,6 +2,8 @@
   session_start();
   include_once '../Connection.php';
   include_once '../other/validation.php';
+  include_once '../other/Header.php';
+  include_once '../other/Footer.php';
 ?>
 <?php 
 
@@ -73,7 +75,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
 <form id="regForm" action="#" method="POST" enctype="multipart/form-data">
-    <h1><b style="color:#35cebe;">Registration</b></h1><br><br>
+    <h1><b style="color:#35cebe;">Registration</b></h1>
     <div class="row">
         <div class="column" >
         <div class="tab">Full Name:

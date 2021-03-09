@@ -1,5 +1,5 @@
 <?php 
-    
+    session_start();
     include_once '../Connection.php';
     // include_once 'President_Dashboard.php';
 
@@ -39,7 +39,10 @@
 
 </head>
 <body>
-    <?php $result = mysqli_query($conn, "SELECT mid,mname,phone,wing,flat,image From tbl_member where is_approved='Pending'");  ?>
+    <?php 
+    
+    $w = $_SESSION['wing'];
+    $result = mysqli_query($conn, "SELECT mid,mname,phone,wing,flat,image From tbl_member where is_approved='Pending' and wing='$w' ");  ?>
     <form action="" method="POST">
 			<div class="row grid-responsive" id="tbl">
 				<div class="column ">

@@ -38,7 +38,7 @@
 
 			<div class="column column-15" id="user">
 				<div class="user-section"><a href="#">
-					<img src="http://via.placeholder.com/50x50" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
+					<img src="../Image/user/<?php echo $_SESSION['uimg']; ?>" alt="profile photo" class="circle float-left profile-photo" width="50" height="auto">
 					<div class="username">
 						<h4><?php echo $_SESSION['mname']; ?></h4>
 						<p>President</p>

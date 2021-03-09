@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -106,7 +107,7 @@ body{
 }
 
 .header-login-signup .header-limiter h1 span {
-	color: #5383d3;
+	color: #35cebe;
 }
 
 /* The navigation links */
@@ -226,8 +227,8 @@ body {
 		</nav>
 
 		<ul>
-			<li><a href="Login.php">Login</a></li>
-			<li><a href="./Registration/Registration.php	">Sign up</a></li>
+			<li><a href="../Project/Login.php">Login</a></li>
+			<li><a href="../Project/Registration/Registration.php">Sign up</a></li>
 		</ul>
 
 	</div>

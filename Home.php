@@ -1,4 +1,4 @@
 <?php 
-    include_once 'Header.php';
-    include_once 'Footer.php';
+    include_once 'other/Header.php';
+    include_once 'other/Footer.php';
 ?>

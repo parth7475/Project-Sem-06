@@ -10,9 +10,9 @@ body {
 #regForm {
   /* margin-top: 15px; */
   background-color: #ffffff;
-  margin: 100px auto;
+  margin: 10px auto 100px;
   font-family: Raleway;
-  padding: 40px;
+  padding: 10px 25px;
   width: 50%;
   /* min-width: 300px; */
 }
