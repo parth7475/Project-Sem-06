@@ -1,0 +1,7 @@
+select tbl_city.cid from tbl_city where tbl_city.stid = tbl_state.stid INNER JOIN tbl_state ON tbl_city.stid=tbl_state.stid;  
+
+select C.NAME,count(E.FNAME) 'EMPLOYEE' from tblEmployee E inner join tblCity C 
+on E.CITYID=C.ID 
+where E.GENDER='F' and C.NAME in('Mumbai','Goa') group by C.NAME;
+
+select c.cname from tbl_City c inner join tbl_state s on c.stid = s.stid where c.stid = 
