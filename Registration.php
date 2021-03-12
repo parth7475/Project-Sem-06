@@ -160,6 +160,7 @@
     
   $(document).ready(function ()
   {
+
         // Getting Cities
         $('#state_dropdown').on('change', function() {
               // alert( this.value );

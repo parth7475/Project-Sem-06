@@ -1,6 +1,7 @@
 <?php 
    include_once './Admin_Dashboard.php'; 
    include_once '../Connection.php';
+  //  include_once '../links.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +33,7 @@
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
     
   <?php 
     if(isset($_REQUEST['btnAddSoc']))
@@ -48,6 +50,20 @@
         $landmarkid = $_REQUEST['landmark'];
         $txtLandmark = $_REQUEST['lmark'];
 
+        if($landmarkid != null)
+        {
+          $query = "insert into tbl_society (sname,address,pincode,lid,cid,stid) values ('$sname','$addr',$pincode,$landmarkid,$cityid,$stateid)";
+          $insert = mysqli_query($conn,$query);
+
+        }
+        else
+        {
+          $query = "insert into tbl_landmark (cid,landmark) values ($cityid,'$txtLandmark')";
+          $insert = mysqli_query($conn,$query);
+        
+          $query2 = "insert into tbl_society (sname,address,pincode,lid,cid,stid) values ('$sname','$addr',$pincode,(select lid from tbl_landmark where landmark = ".$txtLandmark."),$cityid,$stateid)";
+          $insert2 = mysqli_query($conn,$query2);
+        }  
     }
   ?>
 <form id="lgForm" action="" method="POST">
@@ -152,6 +168,10 @@
               document.getElementById("lmark").disabled = true;
             });
 
+            $('#lmark').on('click', function() { 
+              document.getElementById("landmark_dropdown").disabled = true;
+            });
+
             // function disableTxt() {
             //   document.getElementByName("lmark").disabled = true;
             // }
@@ -178,6 +198,11 @@
             //     });
             // });
       });
+
+      function sub()
+      {
+        swal('Added Successfully');
+      }
   </script>                  
 </body>
 </html>
