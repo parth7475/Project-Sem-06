@@ -1,4 +1,6 @@
-<?php ob_start(); ?>
+<?php 
+	ob_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -71,7 +73,7 @@ body{
 }
 
 .menu ul li a:hover {
-	opacity: 1;
+	opacity: 10	;
 }
 
 .menu ul{
@@ -139,7 +141,7 @@ body{
 }
 
 .header-login-signup .header-limiter nav a.selected {
-	color: #608bd2;
+	color: white;
 }
 
 /* Login/Sign up buttons */
@@ -217,7 +219,7 @@ body {
 
 	<div class="header-limiter">
 
-		<h1><a href="#">My<span>Society</span></a></h1>
+		<h1><a href="Home.php">My<span>Society</span></a></h1>
 
 		<nav>
                     <a href="Home.php" style="font-size: 25px;" class="selected">Home</a>
@@ -227,8 +229,8 @@ body {
 		</nav>
 
 		<ul>
-			<li><a href="../Project/Login.php">Login</a></li>
-			<li><a href="../Project/Registration/Registration.php">Sign up</a></li>
+			<li><a href="Login.php">Login</a></li>
+			<li><a href="Registration.php">Sign up</a></li>
 		</ul>
 
 	</div>

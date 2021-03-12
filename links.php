@@ -8,5 +8,7 @@
     //Login - Logout
     $LogOut = "../Logout.php";
 
-    
+    //Header - Footer
+    $header = "../Header.php";
+    $footer = "../Footer.php";
 ?>

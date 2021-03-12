@@ -2,8 +2,14 @@
   box-sizing: border-box;
 }
 
+html
+{
+  background-color: #f7f2dfe7;
+}
+
 body {
   background-color: #f7f2dfe7;
+
   /* overflow-y: hidden; */
 } 
 
@@ -14,6 +20,18 @@ body {
   font-family: Raleway;
   padding: 10px 25px;
   width: 50%;
+  font-size: 15px;
+  /* min-width: 300px; */
+}
+
+#lgForm {
+  /* margin-top: 15px; */
+  background-color: #ffffff;
+  margin: 100px auto 100px;
+  font-family: Raleway;
+  padding: 10px 25px;
+  width: 50%;
+  font-size: 15px;
   /* min-width: 300px; */
 }
 
@@ -89,3 +107,8 @@ button:hover {
   display: table;
   clear: both;
 }
+
+/* #regBody
+{
+  height: 250px;
+} */

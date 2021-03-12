@@ -178,7 +178,7 @@
 
 
     ==================================================================================================
-    president dashboard che aa aetle delete marto nai.
+    President_dashboard.php
 
 
     <?php 
@@ -716,3 +716,243 @@ button:hover {
   display: table;
   clear: both;
 }
+
+
+==================================================================================================
+Admin_Dashboard(OLD)
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Admin</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- Custom styles for this template -->
+  <link href="css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <div style="background-color:#696969; width:100%; height:75px;">
+    <a style="font-size:40px; color:#f0a73a; padding-left:10px; padding-top:15px;">DASHBOARD</a>
+    <button style="background-color:blueviolet; float:right; padding:5px; border-radius:20px; margin-top:15px; margin-left:10px;">LOGOUT</button>
+    <a style="font-size:25px; color:#f0a73a; padding-left:10px; float:right; padding-top:15px;">Hello,Admin</a>
+  </div>
+
+  <div class="d-flex" id="wrapper">
+    <!-- <a style="text-align:left; text-size:15px; ">Dashboard</a> -->
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <!-- <div class="sidebar-heading">Dashboard</div> -->
+      <div class="list-group list-group-flush">
+        <a href="Add_Society.php" class="list-group-item list-group-item-action bg-light">Register Society</a>
+        <a href="Add_President.php" class="list-group-item list-group-item-action bg-light">Register President</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">View Societies</a>
+        <!-- <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a> -->
+
+
+      </div>
+    </div>
+    
+
+</body>
+
+</html>
+
+
+========================================================================================
+Add_Society.php
+
+
+<?php 
+    // include_once 'Admin_Dashboard.php';
+    include_once '../Connection.php';
+    session_start();
+   
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Society</title>
+    <link href="../css/logincss.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/milligram.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+
+        form {
+            margin:200px auto auto 500px ;
+            font-family: Raleway;
+        }
+
+        input select{
+            margin-top: 0px;
+        }
+
+        textarea {
+            font-family: Raleway;
+        }
+
+    </style>
+</head>
+<body>
+  <?php 
+     if(isset($_REQUEST['btnAddSoc']))
+     {
+         $sname = $_POST['sname'];
+         $addr = $_REQUEST['addr'];
+         $pincode = $_REQUEST['pin'];
+        //  $stateid = $_REQUEST['state'];
+        //  $cityid = $_REQUEST['city'];
+        //  $landmarkid = $_REQUEST['landmark'];
+         $txtLandmark = $_REQUEST['lmark'];
+ 
+        //  echo "<script>alert(".$pincode.");</script>";
+        //  echo "<script>alert('asasasas');</script>";
+
+     }
+  ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  
+    <?php //echo htmlspecialchars($_SERVER["PHP_SELF"]);?>
+    <form id="lgForm" action="" method="POST">
+        <h3><b style="color:#35cebe;">ADD SOCIETY</b></h3>
+        <div class="tab">Society Name:
+          <p><input type="text" placeholder="Enter society name..." oninput="this.className = ''" name="sname" id="sname"></p>
+        </div>
+        <div class="tab">Address:
+          <p><textarea name="addr" id="addr" placeholder="Enter Address...."></textarea></p>
+        </div>
+        <div class="tab">Pincode:
+          <p><input type="text" placeholder="Enter pincode..." oninput="this.className = ''" name="pin" id="pin"></p>
+        </div>
+        <div class="tab" style="margin-bottom: 15px;">State:<br>
+                <select name="state" id="state_dropdown">
+                    <option>SELECT STATE</option>
+                    <?php
+                      $records = mysqli_query($conn, "SELECT * From tbl_state");  // Use select query here 
+
+                      while($data = mysqli_fetch_array($records))
+                      {
+                          echo "<option value='". $data['stid'] ."'>" .$data['sname'] ."</option>";  // displaying data in option menu
+                      }	
+                    ?>
+                </select>
+            </div>
+
+            <div class="tab" style="margin-bottom: 15px;">City:<br>
+                <select name="city" id="city_dropdown">
+                  <!-- <option>--Select your City--</option> -->
+                </select>
+            </div>
+
+            <div class="tab" style="margin-bottom: 15px;">Select landmark (if exist):<br>
+                <select name="landmark" id="landmark_dropdown" onselect="myFunction()">
+                  <!-- <option>--Select your Landmark--</option> -->
+                </select>
+            </div>
+            <h2><center>OR</center></h2>
+            <div class="tab">Landmark:
+              <p><input type="text" placeholder="Enter landmark..." oninput="this.className = ''" name="lmark" id="lmark"></p>
+            </div>
+        <div style="overflow:auto;">
+          <div style="float:right;">
+            <input type="submit" name="btnAddSoc" onclick="sub()" style="background-color:#35cebe; font-size:15px; color:#ffffff;">
+          </div>
+        </div>
+    </form>
+
+  <script>
+    $('#state_dropdown').on('change', function() {
+              // alert(this.value);
+              $("#city_dropdown").html("<option value=''>SELECT CITY</option>");
+              $.ajax({
+                  url: "../Registration/Get_City.php",
+                  type: 'post',
+                  data: { "id": $("#state_dropdown").val()},
+                  success: function(result){
+                    // alert(result);
+                    var str = "<option value=''>SELECT CITY</option>";
+                    $.each(result,function(key,value) {
+                        str = str + "<option value='" + value.id + "'>" + value.name + "</option>";
+                    });
+                    $("#city_dropdown").html(str);
+                },
+                error: function(err) {
+                    alert(err.responseText);
+                }
+            });
+       });
+
+
+        // Getting Landmarks
+        $('#city_dropdown').on('change', function() {
+                    // alert( this.value );
+                    $("#landmark_dropdown").html("<option value=''>SELECT LANDMARK</option>");
+                    $.ajax({
+                        url: "../Registration/Get_Landmark.php",
+                        type: 'post',
+                        data: { "id": $("#city_dropdown").val()},
+                        success: function(result){
+                          // alert(result);
+                          var str = "<option value=''>SELECT LANDMARK</option>";
+                          $.each(result,function(key,value) {
+                              str = str + "<option value='" + value.id + "'>" + value.name + "</option>";
+                          });
+                          $("#landmark_dropdown").html(str);
+                      },
+                      error: function(err) {
+                          alert("error");
+                      }
+                  });
+        });
+
+
+        // Getting Societies
+        $('#landmark_dropdown').on('change', function() {
+              // alert( this.value );
+              $("#society_dropdown").html("<option value=''>SELECT SOCIETY</option>");
+              $.ajax({
+                  url: "../Registration/Get_Society.php",
+                  type: 'post',
+                  data: { "id": $("#landmark_dropdown").val()},
+                  success: function(result){
+                    // alert(result);
+                    var str = "<option value=''>SELECT SOCIETY</option>";
+                    $.each(result,function(key,value) {
+                        str = str + "<option value='" + value.id + "'>" + value.name + "</option>";
+                    });
+                    $("#society_dropdown").html(str);
+                },
+                error: function(err) {
+                    alert("error");
+                }
+            });
+        });
+
+        function sub()
+        {
+            var a = document.getElementsByName("state").value;
+            console.log(a);
+        }
+  </script>
+</body>
+</html>

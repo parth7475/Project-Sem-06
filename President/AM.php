@@ -29,7 +29,12 @@
   	<link rel="stylesheet" href="../css/normalize.css">
   	<link rel="stylesheet" href="../css/milligram.min.css">
 	  <link rel="stylesheet" href="../css/styles.css">
+    <link href="css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+    <script src="js/datatables/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="js/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
 
+    
     <style>
       #tbl{
         margin-left: 100px;
@@ -51,7 +56,7 @@
 							<h3>Requested Members</h3>
 						</div>
 						<div class="card-block" >
-							<table>
+							<table id="UserTable">
 								<thead>
 									<tr>
                     <th scope="col" style="padding-left: 5px;">#</th>
@@ -98,9 +103,33 @@
       
 
       <script>
+        function filterGlobal () {
+        $('#UserTable').DataTable().search(
+                $('#global_filter').val(),
+                $('#global_regex').prop('checked'),
+                $('#global_smart').prop('checked')
+            ).draw();
+        }
+        
+        function filterColumn ( i ) {
+            $('#UserTable').DataTable().column( i ).search(
+                $('#col'+i+'_filter').val(),
+                $('#col'+i+'_regex').prop('checked'),
+                $('#col'+i+'_smart').prop('checked')
+            ).draw();
+        }
+        
         $(document).ready(function() {
-            $('#userTable').DataTable();
-        });
+            $('#UserTable').DataTable();
+        
+            $('input.global_filter').on( 'keyup click', function () {
+                filterGlobal();
+            } );
+        
+            $('input.column_filter').on( 'keyup click', function () {
+                filterColumn( $(this).parents('tr').attr('data-column') );
+            } );
+        } );
 
         function approve(mid)
         {

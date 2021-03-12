@@ -1,9 +1,11 @@
 <?php 
   session_start();
-  include_once '../Connection.php';
-  include_once '../other/validation.php';
-  include_once '../other/Header.php';
-  include_once '../other/Footer.php';
+  include_once 'Connection.php';
+  include_once 'other/validation.php';
+  include_once 'links.php';
+  // echo $header;
+  include_once 'Header.php';
+  include_once 'Footer.php';
 ?>
 <?php 
 
@@ -68,11 +70,14 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-  <link href="../css/logincss.css" rel="stylesheet">
+  <link href="css/logincss.css" rel="stylesheet">
 </head>
 <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<a href="<?php //echo $header; ?>"></a> 
+<a href="<?php //echo $footer; ?>"></a> 
 
 <form id="regForm" action="#" method="POST" enctype="multipart/form-data">
     <h1><b style="color:#35cebe;">Registration</b></h1>
@@ -160,7 +165,7 @@
               // alert( this.value );
               $("#city_dropdown").html("<option value=''>SELECT CITY</option>");
               $.ajax({
-                  url: "./Get_City.php",
+                  url: "./Registration/Get_City.php",
                   type: 'post',
                   data: { "id": $("#state_dropdown").val()},
                   success: function(result){
@@ -183,7 +188,7 @@
                     // alert( this.value );
                     $("#landmark_dropdown").html("<option value=''>SELECT LANDMARK</option>");
                     $.ajax({
-                        url: "./Get_Landmark.php",
+                        url: "./Registration/Get_Landmark.php",
                         type: 'post',
                         data: { "id": $("#city_dropdown").val()},
                         success: function(result){
@@ -206,7 +211,7 @@
               // alert( this.value );
               $("#society_dropdown").html("<option value=''>SELECT SOCIETY</option>");
               $.ajax({
-                  url: "./Get_Society.php",
+                  url: "./Registration/Get_Society.php",
                   type: 'post',
                   data: { "id": $("#landmark_dropdown").val()},
                   success: function(result){

@@ -17,13 +17,13 @@
 
           $usr=$_POST["email"];
           $pas=$_POST["pwd"];
-          $sql = "select count(*) from tbl_member where email ='$usr' and password=md5('$pas') and is_approved='Approved' ";
+          $sql = "select count(*) from tbl_member where email ='$usr' and password=md5('$pas') and member_type='Admin' ";
           $result = mysqli_query($conn,$sql);
           $rows=mysqli_fetch_array($result);
 
           if ($rows["count(*)"]> 0) {
 
-            $sql = "select * from tbl_member where email ='$usr' and password=md5('$pas')";
+            $sql = "select * from tbl_member where email ='$usr' and password=md5('$pas') and member_type='Admin'";
             $result = mysqli_query($conn,$sql);
             $rows=mysqli_fetch_array($result);
 
@@ -32,34 +32,15 @@
             $_SESSION["mpass"] = $rows['password'];
             $_SESSION['mname'] = $rows['mname'];
             $_SESSION['uimg'] = $rows['image'];
-            $_SESSION['wing'] = $rows['wing'];
+            // $_SESSION['wing'] = $rows['wing'];
 
-            $mt = $rows["member_type"];
-            // echo $mt;
-            // header("location:Member_Dashboard.php");
-            echo '<script>alert("Success");</script>';
-
-            if($mt == "Member")
-            {
-              header("location:Member/Member_Dashboard.php");
-            }
-            elseif($mt == "Secretary")
-            {
-              header("location:Secretary_Dashboard.php");  
-            }
-            elseif($mt == "President")
-            {
-              header("location:President/President_Dashboard.php");
-            }
-            else
-            {
-              header("location:SPresident_Dashboard.php");
-            }
+            header("location:Admin/Admin_Dashboard.php");
+           
           }
           }
   ?>
   <form id="lgForm" action="" method="POST">
-    <h1><b style="color:#35cebe;">LOGIN</b></h1>
+    <h1><b style="color:#35cebe;">ADMIN LOGIN</b></h1>
     <div class="tab">USER ID:
       <p><input type="email" placeholder="Enter email..." oninput="this.className = ''" name="email" id="user"></p>
     </div>
